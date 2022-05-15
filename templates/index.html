@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body  %}
+<h5 class="my-3" align="center">Add your To Do</h5>
+<div class="my-3">
+      <form action="/" method="POST" class="container">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" class="form-control" name="title" id="title" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <input name="desc" id="desc" type="text" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </form>
+    </div>
+    
+    <div class="Container my-4">
+      <h4 align="center" >Your To Do List</h4>
+      {% if alldet|length==0 %}
+      <div class="alert alert-dark container" role="alert">
+        No To Do found,add your first To Do now...
+      </div>
+      {% else %}
+        
+      
+      <table class="table container">
+        <thead>
+          <tr>
+            <th scope="col">SrNo.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date/Time</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in alldet %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{entry.title}}</td>
+            <td>{{entry.desc}}</td>
+            <td>{{entry.dateTime}}</td>
+            <td align="left">
+              <a
+                href="/update/{{entry.SrNo}}"
+                type="button"
+                class="btn btn-outline-dark mx-0"
+              >
+                Update
+              </button>
+              <a
+                href="/delete/{{entry.SrNo}}"
+                type="button"
+                class="btn btn-outline-dark mx-1"
+              >
+                Delete
+              </button>
+              
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+     
+        
+      {% endif %}
+    </div>
+    {% endblock body %}
