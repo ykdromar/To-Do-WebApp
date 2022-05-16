@@ -1,12 +1,6 @@
-from turtle import title
-from unicodedata import name
 from flask import Flask, redirect, render_template, request, redirect
-import _tkinter
-
-
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
-
 from sqlalchemy import null
 
 app = Flask(__name__)
@@ -56,4 +50,5 @@ def hello_world():
 
 
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=True)
+
